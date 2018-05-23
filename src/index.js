@@ -1,4 +1,6 @@
+import service from './middleware/service'
 import bodyParser from 'koa-bodyparser'
+import cors from './middleware/cors'
 import logger from 'koa-logger'
 import json from 'koa-json'
 import koa from 'koa'
@@ -19,6 +21,8 @@ class Application {
         }))
         this.app.use(json())
         this.app.use(logger())
+        this.app.use(cors.cors)
+        this.app.use(service.service)
     }
 
     router() {
