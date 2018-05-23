@@ -1,4 +1,5 @@
 import router from 'koa-router'
+import process from './process'
 const route = router()
 
 route.get('/', async ctx => {
@@ -7,5 +8,7 @@ route.get('/', async ctx => {
         'message': 'Meow~',
     }
 })
+
+route.use('', process.routes(), process.allowedMethods())
 
 export default route

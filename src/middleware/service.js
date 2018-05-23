@@ -7,7 +7,7 @@ import s from '../service'
  * @param {() => Promise<any>} next
  */
 async function service(ctx, next) {
-    ctx.state.service = s
+    ctx.service = s
     return await next()
 }
 

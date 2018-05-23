@@ -8,7 +8,7 @@ import tcpPing from 'tcp-ping'
  * @returns {boolean} Is host down
  */
 async function ping(host, port) {
-    return await new Promise((reslove, reject) => {
+    const res = await new Promise((reslove, reject) => {
         tcpPing.ping({
             address: host,
             port,
@@ -18,9 +18,11 @@ async function ping(host, port) {
             if (err) {
                 return reject(err)
             }
-            reslove(data.address.min !== undefined)
+            reslove(data.min !== undefined)
         })
     })
+
+    return res
 }
 
 export default {
