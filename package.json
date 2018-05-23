@@ -1,0 +1,46 @@
+{
+    "name": "torch",
+    "version": "0.0.0",
+    "description": "Simple and useful tcping API",
+    "main": "src/index.js",
+    "repository": "https://github.com/Indexyz/Torch.git",
+    "author": "Indexyz <jiduye@gmail.com>",
+    "license": "MIT",
+    "scripts": {
+        "start": "nodemon --inspect dist/bin/run.js",
+        "build": "babel src --out-dir dist --minified --ignore __tests__,__mocks__",
+        "watch": "gulp watch",
+        "lint": "eslint src",
+        "test": "jest"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.0",
+        "babel-eslint": "^8.2.3",
+        "babel-plugin-transform-class-properties": "^6.24.1",
+        "babel-plugin-transform-object-rest-spread": "^6.26.0",
+        "babel-preset-env": "^1.6.1",
+        "babel-register": "^6.26.0",
+        "babel-jest": "^22.4.3",
+        "chai": "^4.1.2",
+        "eslint": "^4.19.1",
+        "eslint-config-babel": "^7.0.2",
+        "eslint-plugin-babel": "^5.1.0",
+        "eslint-plugin-flowtype": "^2.46.3",
+        "gulp": "^3.9.1",
+        "gulp-babel": "^7.0.1",
+        "jest": "^22.4.3",
+        "nodemon": "^1.17.3",
+        "should": "^13.2.1"
+    },
+    "dependencies": {
+        "chalk": "^2.4.0",
+        "joi": "^13.2.0",
+        "koa": "^2.5.0",
+        "koa-bodyparser": "^4.2.0",
+        "koa-json": "^2.0.2",
+        "koa-locales": "^1.8.0",
+        "koa-logger": "^3.2.0",
+        "koa-router": "^7.4.0"
+    }
+}
