@@ -18,7 +18,7 @@ async function ping(host, port) {
             if (err) {
                 return reject(err)
             }
-            reslove(data.min !== undefined)
+            reslove(data)
         })
     })
 

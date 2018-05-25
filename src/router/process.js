@@ -10,25 +10,28 @@ route.get('/:host/:port', async ctx => {
     }
 
     try {
-        joi.validate(ctx.params, schema)
+        await joi.validate(ctx.params, schema)
     } catch (err) {
         ctx.status = 422
         ctx.body = { err }
         return
     }
 
-    const status = await ctx.service.ping(ctx.params.host, ctx.params.port)
+    const data = await ctx.service.ping(ctx.params.host, ctx.params.port)
+    const status = (data.min !== undefined)
 
     if (config.get('enableDataAnalytics')) {
         ctx.service.addDocs({
             status,
             time: new Date(),
+            lag: data.avg,
             ...ctx.params,
         }).catch(err => console.log(err))
     }
 
     ctx.body = {
         status,
+        time: data.avg,
     }
 })
 

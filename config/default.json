@@ -1,5 +1,5 @@
 {
-    "enableDataAnalytics": true,
+    "enableDataAnalytics": false,
     "rethinkdb": {
         "host": "127.0.0.1",
         "port": 29015,
