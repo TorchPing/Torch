@@ -934,6 +934,10 @@ binary-extensions@^1.0.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-1.11.0.tgz#46aa1751fb6a2f93ee5e689bb1087d4b14c6c205"
 
+"bluebird@>= 2.3.2 < 3":
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-2.11.0.tgz#534b9033c022c9579c56ba3b3e5a5caafbb650e1"
+
 boxen@^1.2.1:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/boxen/-/boxen-1.3.0.tgz#55c6c39a8ba58d9c61ad22cd877532deb665a20b"
@@ -1277,6 +1281,13 @@ concat-stream@^1.6.0:
     inherits "^2.0.3"
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
+
+config@^1.30.0:
+  version "1.30.0"
+  resolved "https://registry.yarnpkg.com/config/-/config-1.30.0.tgz#1d60a9f35348a13c175798d384e81a5a16c3ba6e"
+  dependencies:
+    json5 "0.4.0"
+    os-homedir "1.0.2"
 
 configstore@^3.0.0:
   version "3.1.2"
@@ -3254,6 +3265,10 @@ json-stringify-safe@5, json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
 
+json5@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/json5/-/json5-0.4.0.tgz#054352e4c4c80c86c0923877d449de176a732c8d"
+
 json5@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/json5/-/json5-0.5.1.tgz#1eade7acc012034ad84e2396767ead9fa5495821"
@@ -4024,7 +4039,7 @@ ordered-read-streams@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/ordered-read-streams/-/ordered-read-streams-0.1.0.tgz#fd565a9af8eb4473ba69b6ed8a34352cb552f126"
 
-os-homedir@^1.0.0:
+os-homedir@1.0.2, os-homedir@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/os-homedir/-/os-homedir-1.0.2.tgz#ffbc4988336e0e833de0c168c7ef152121aa7fb3"
 
@@ -4584,6 +4599,12 @@ restore-cursor@^2.0.0:
 ret@~0.1.10:
   version "0.1.15"
   resolved "https://registry.yarnpkg.com/ret/-/ret-0.1.15.tgz#b8a4825d5bdb1fc3f6f53c2bc33f81388681c7bc"
+
+rethinkdb@^2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/rethinkdb/-/rethinkdb-2.3.3.tgz#3dc6586e22fa1dabee0d254e64bd0e379fad2f72"
+  dependencies:
+    bluebird ">= 2.3.2 < 3"
 
 right-align@^0.1.1:
   version "0.1.3"

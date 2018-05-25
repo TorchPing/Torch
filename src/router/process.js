@@ -16,8 +16,16 @@ route.get('/:host/:port', async ctx => {
         return
     }
 
+    const status = await ctx.service.ping(ctx.params.host, ctx.params.port)
+
+    ctx.service.addDocs({
+        status,
+        time: new Date(),
+        ...ctx.params,
+    }).catch(err => console.log(err))
+
     ctx.body = {
-        status: await ctx.service.ping.ping(ctx.params.host, ctx.params.port),
+        status,
     }
 })
 
