@@ -24,7 +24,7 @@ route.get('/:host/:port', async ctx => {
         ctx.service.addDocs({
             status,
             time: new Date(),
-            lag: data.avg === null ? -1: data.avg,
+            lag: data.avg === null ? 0: data.avg,
             ...ctx.params,
         }).catch(err => console.log(err))
     }
