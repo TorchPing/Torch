@@ -1,5 +1,6 @@
 import router from 'koa-router'
 import joi from 'joi'
+import config from 'config'
 const route = router()
 
 route.get('/:host/:port', async ctx => {
@@ -18,11 +19,13 @@ route.get('/:host/:port', async ctx => {
 
     const status = await ctx.service.ping(ctx.params.host, ctx.params.port)
 
-    ctx.service.addDocs({
-        status,
-        time: new Date(),
-        ...ctx.params,
-    }).catch(err => console.log(err))
+    if (config.get('enableDataAnalytics')) {
+        ctx.service.addDocs({
+            status,
+            time: new Date(),
+            ...ctx.params,
+        }).catch(err => console.log(err))
+    }
 
     ctx.body = {
         status,

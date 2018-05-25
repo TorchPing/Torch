@@ -11,22 +11,27 @@ async function getDatabase() {
 }
 
 async function init() {
-    const dbList = await r.dbList().run(getDatabase())
+    if (!config.get('enableDataAnalytics')) {
+        return
+    }
+    const conn = await getDatabase()
+
+    const dbList = await r.dbList().run(conn)
 
     if (dbList.indexOf('torch') === -1) {
-        await r.dbCreate('torch').run(getDatabase())
+        await r.dbCreate('torch').run(conn)
     }
 
-    const tableList = await r.db('torch').tableList().run(getDatabase())
+    const tableList = await r.db('torch').tableList().run(conn)
 
     if (tableList.indexOf('result') === -1) {
-        await r.db('torch').tableCreate('result').run(getDatabase())
+        await r.db('torch').tableCreate('result').run(conn)
     }
 }
 
 async function addDocs(docs) {
     return r.db('torch').table('result')
-        .insert(docs).run(getDatabase())
+        .insert(docs).run(await getDatabase())
 }
 
 init()
