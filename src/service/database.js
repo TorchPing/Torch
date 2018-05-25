@@ -1,13 +1,8 @@
 import r from 'rethinkdb'
 import config from 'config'
 
-let db = null
-
 async function getDatabase() {
-    if (db === null) {
-        db = await r.connect(config.get('rethinkdb'))
-    }
-    return db
+    return await r.connect(config.get('rethinkdb'))
 }
 
 async function init() {
