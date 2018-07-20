@@ -22,7 +22,7 @@ router.get('/', async ctx => {
     }
 })
 
-route.get('/:host/:port', async ctx => {
+router.get('/:host/:port', async ctx => {
     const data = await utils(ctx.params.host, ctx.params.port)
     const status = (data.min !== undefined)
 
@@ -32,7 +32,7 @@ route.get('/:host/:port', async ctx => {
     }
 })
 
-app.use(route.routes())
-    .use(route.allowedMethods())
+app.use(router.routes())
+    .use(router.allowedMethods())
 
 module.exports = app
