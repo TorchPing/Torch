@@ -1,0 +1,14 @@
+{
+  "name": "torch",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Indexyz/Torch.git",
+  "author": "Indexyz <jiduye@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "koa": "^2.5.2",
+    "koa-router": "^7.4.0",
+    "tcp-ping": "^0.1.1"
+  }
+}
