@@ -6,7 +6,7 @@ const router = new Router()
 const app = new koa()
 
 // cors
-app.use(async ctx => {
+app.use(async (ctx, next) => {
     ctx.set('Access-Control-Allow-Origin', '*')
     ctx.set('Access-Control-Allow-Methods', 'GET')
     ctx.set('Access-Control-Allow-Headers', 'Origin, X-User-Token, X-Requested-With, Content-Type, Accept')
