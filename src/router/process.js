@@ -1,6 +1,10 @@
 import router from 'koa-router'
 import joi from 'joi'
 import config from 'config'
+import dns from 'dns'
+import util from 'util'
+
+const lookup = util.promisify(dns.lookup)
 const route = router()
 
 route.get('/:host/:port', async ctx => {
@@ -21,12 +25,14 @@ route.get('/:host/:port', async ctx => {
     const status = (data.min !== undefined)
 
     if (config.get('enableDataAnalytics')) {
-        ctx.service.addDocs({
-            status,
-            lag: isNaN(data.avg) ? -1: data.avg,
-            ...ctx.params,
-            tags: config.get('tags'),
-        }).catch(err => console.log(err))
+        lookup(ctx.params.host)
+            .then(host => ctx.service.addDocs(Object.assign(host, {
+                status,
+                lag: isNaN(data.avg) ? -1: data.avg,
+                ...ctx.params,
+                tags: config.get('tags'),
+            })))
+            .catch(err => console.log(err))
     }
 
     ctx.body = {
