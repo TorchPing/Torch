@@ -23,7 +23,6 @@ route.get('/:host/:port', async ctx => {
     if (config.get('enableDataAnalytics')) {
         ctx.service.addDocs({
             status,
-            time: new Date(),
             lag: isNaN(data.avg) ? -1: data.avg,
             ...ctx.params,
             tags: config.get('tags'),
