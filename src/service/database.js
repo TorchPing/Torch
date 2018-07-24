@@ -13,7 +13,7 @@ async function init() {
 }
 
 async function addDocs(docs) {
-    return redis.publish(config.get('channel'), docs)
+    return redis.publish(config.get('channel'), JSON.stringify(docs))
 }
 
 init()
