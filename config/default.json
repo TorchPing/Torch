@@ -1,9 +1,6 @@
 {
     "enableDataAnalytics": false,
-    "rethinkdb": {
-        "host": "127.0.0.1",
-        "port": 29015,
-        "user": "admin",
-        "password": ""
-    }
+    "redis": "",
+    "channel": "",
+    "tags": "torch"
 }

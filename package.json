@@ -36,6 +36,7 @@
     "dependencies": {
         "chalk": "^2.4.0",
         "config": "^1.30.0",
+        "ioredis": "^3.2.2",
         "joi": "^13.2.0",
         "koa": "^2.5.0",
         "koa-bodyparser": "^4.2.0",
@@ -43,7 +44,6 @@
         "koa-locales": "^1.8.0",
         "koa-logger": "^3.2.0",
         "koa-router": "^7.4.0",
-        "rethinkdb": "^2.3.3",
         "tcp-ping": "^0.1.1"
     }
 }

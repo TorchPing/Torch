@@ -26,6 +26,7 @@ route.get('/:host/:port', async ctx => {
             time: new Date(),
             lag: isNaN(data.avg) ? -1: data.avg,
             ...ctx.params,
+            tags: config.get('tags'),
         }).catch(err => console.log(err))
     }
 
