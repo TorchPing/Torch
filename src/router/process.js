@@ -22,7 +22,7 @@ route.get('/:host/:port', async ctx => {
     }
 
     const data = await ctx.service.ping(ctx.params.host, ctx.params.port)
-    const status = (data.avg !== undefined)
+    const status = !isNaN(data.avg)
 
     if (config.get('enableDataAnalytics')) {
         lookup(ctx.params.host)
