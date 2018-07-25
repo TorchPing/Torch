@@ -22,13 +22,13 @@ route.get('/:host/:port', async ctx => {
     }
 
     const data = await ctx.service.ping(ctx.params.host, ctx.params.port)
-    const status = (data.min !== undefined)
+    const status = (data.avg !== undefined)
 
     if (config.get('enableDataAnalytics')) {
         lookup(ctx.params.host)
             .then(host => ctx.service.addDocs(Object.assign(host, {
                 status,
-                lag: data.min === undefined ? -1 : data.min,
+                lag: isNaN(data.avg) ? -1: data.avg,
                 ...ctx.params,
                 tags: config.get('tags'),
             })))
@@ -37,7 +37,7 @@ route.get('/:host/:port', async ctx => {
 
     ctx.body = {
         status,
-        time: data.min === undefined ? null : data.min,
+        time: data.avg,
     }
 })
 
