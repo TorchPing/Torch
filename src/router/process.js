@@ -28,7 +28,7 @@ route.get('/:host/:port', async ctx => {
         lookup(ctx.params.host)
             .then(host => ctx.service.addDocs(Object.assign(host, {
                 status,
-                lag: isNaN(data.min) ? -1: data.min,
+                lag: data.min === undefined ? -1 : data.min,
                 ...ctx.params,
                 tags: config.get('tags'),
             })))
@@ -37,7 +37,7 @@ route.get('/:host/:port', async ctx => {
 
     ctx.body = {
         status,
-        time: data.min,
+        time: data.min === undefined ? null : data.min,
     }
 })
 
