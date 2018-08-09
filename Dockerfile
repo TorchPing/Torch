@@ -1,12 +1,12 @@
-FROM node:9.11.1-alpine
+FROM alpine:3.8 as builder
+ADD . /app
+RUN apk --no-cache add nodejs yarn && \
+    cd /app && yarn && yarn run build
+ 
+FROM alpine:3.8
+RUN apk --no-cache add ca-certificates nodejs
+COPY --from=builder /app/dist /app
 
-WORKDIR /usr/src/app
-COPY package*.json ./
-
-RUN npm install
-
-COPY . .
-
-RUN npm run build
-
-CMD [ "node", "dist/bin/run.js" ]
+EXPOSE 3000
+WORKDIR /app
+CMD node /app/bin/run.js
