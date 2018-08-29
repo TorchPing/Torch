@@ -1,7 +1,7 @@
 import Redis from 'ioredis'
 import config from 'config'
 
-let redis = new Redis(config.get('redis'))
+let redis = null
 
 async function init() {
     if (!config.get('enableDataAnalytics')) {
